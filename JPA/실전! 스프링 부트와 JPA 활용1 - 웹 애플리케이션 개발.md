@@ -40,3 +40,16 @@
 - @Inheritance(strategy = InheritanceType.SINGLE_TABLE) :
     - [JOINED, SINGLE_TABLE , TABLE_PER_CLASS]
 ~~~
+
+~~~java
+@JoinTable(name = "category_item",
+        joinColumns = @JoinColumn(name = "category_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id"))
+// 관계형 테이블? 추가적인 컬럼을 추가할 수 없기 때문에 실무에서는 사용되지 않는다.
+~~~ 
+
+> JPA 스펙상 엔티티나 임베디드 타입( @Embeddable )은 자바 기본 생성자(default constructor)를 
+> public 또는 protected 로 설정해야 한다. 
+> public 으로 두는 것 보다는 protected 로 설정하는 것이 그나마 더 안전하다.
+> JPA가 이런 제약을 두는 이유는 
+> JPA 구현 라이브러리가 객체를 생성할 때 리플랙션 같은 기술을 사용할 수 있도록 지원해야 하기 때문이다.
